@@ -1,0 +1,15 @@
+{
+  "name": "ng-password",
+  "author": {
+    "name": "Jakob Pennington",
+    "email": "jakob.pennington@gmail.com"
+  },
+  "description": "An angular library that provides a collections of tools to test for password strength.",
+  "peerDependencies": {
+    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
+  },
+  "dependencies": {
+    "sha1": "^1.1.1"
+  }
+}
