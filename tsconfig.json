@@ -15,6 +15,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ng-password-package": [
+        "dist/ng-password-package"
+      ],
+      "ng-password-package/*": [
+        "dist/ng-password-package/*"
+      ]
+    }
   }
 }

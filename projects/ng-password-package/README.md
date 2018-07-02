@@ -19,7 +19,7 @@ Install the npm package.
 npm install ng-password --save
 ```
 
-Import the HIBPService and HIBPValidator into your ```app.module.ts```. You'll also need to import **HttpClientModule** and **ReactiveFormsModule**.
+Import the PasswordService and PasswordValidator into your ```app.module.ts```. You'll also need to import **HttpClientModule** and **ReactiveFormsModule**.
 
 ```
 import { BrowserModule } from '@angular/platform-browser';
@@ -29,8 +29,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
-// HIBP Library
-import { HIBPService, HIBPValidator } from 'ng-haveibeenpwned';
+// ng-password Library
+import { PasswordService, PasswordValidator } from 'ng-password';
 
 @NgModule({
     declarations: [
@@ -42,8 +42,8 @@ import { HIBPService, HIBPValidator } from 'ng-haveibeenpwned';
         ReactiveFormsModule
     ],
     providers: [
-        HIBPService,
-        HIBPValidator
+        PasswordService,
+        PasswordValidator
     ],
     bootstrap: [AppComponent]
 })
@@ -53,13 +53,13 @@ export class AppModule { }
 
 ## Usage
 
-Import the HIBPService and HIBPValidator into your component and inject them into the constructor.
+Import the PasswordService and PasswordValidator into your component and inject them into the constructor.
 
 ```
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 // HIBP Library
-import { HIBPService, HIBPValidator } from 'ng-haveibeenpwned';
+import { PasswordService, PasswordValidator } from 'ng-haveibeenpwned';
 
 @Component({
     selector: 'hibp-root',
@@ -71,8 +71,8 @@ export class AppComponent implements OnInit {
     ...
 
     constructor(
-        private hibpService: HIBPService,
-        private hibpValidator: HIBPValidator,
+        private passwordService: PasswordService,
+        private passwordValidator: PasswordValidator,
         private fb: FormBuilder
     ) { }
 
@@ -81,7 +81,7 @@ export class AppComponent implements OnInit {
 
 ## Validators
 
-The HIBPValidator currently has three validators:
+The PasswordValidator currently has three validators:
 
 * **checkPassword:** Test the password against the HIBP API using the non-anonymous **pwnedpassword** API. Returns the number of breaches the password has been pwned in in the **numBreaches** validator response.
 
@@ -99,18 +99,18 @@ this.registrationForm = this.fb.group(
         password: ['', [
             Validators.required,
             Validators.minLength(this.passwordminLength)],
-            this.hibpValidator.checkPasswordAnon.bind(this.hibpValidator)],
+            this.passwordValidator.checkPasswordAnon.bind(this.passwordValidator)],
         confirmPassword: ['', Validators.required]
-    }, { validator: this.hibpValidator.matchPasswordValidator });
+    }, { validator: this.passwordValidator.matchPasswordValidator });
 ```
 
 
 ## Service
 
-The HIBP service supports each of the API endpoints offered by the HIBP V2 API. The services return an observable, so they can be used like this:
+The PasswordService supports each of the API endpoints offered by the Have I Been Pwned V2 API. The services return an observable, so they can be used like this:
 
 ```
-this.hibpService.pwnedPassword('Password01')
+this.passwordService.pwnedPassword('Password01')
     .subscribe((numBreaches: number) => {
         // Return the number of breaches containing the password
         console.log('This password has appeared in ' + numBreaches + ' breaches.');
@@ -119,7 +119,7 @@ this.hibpService.pwnedPassword('Password01')
 
 ## Can I use this code?
 
-Of course you can, go your hardest! I'll soon be creating an NPM package so you can easily import the HIBPService and password validator into your own project.
+Of course you can, go your hardest! I'll soon be creating an NPM package so you can easily import the PasswordService and password validator into your own project.
 
 ## Thanks
 

@@ -125,6 +125,46 @@
           }
         }
       }
+    },
+    "ng-password-package": {
+      "root": "projects/ng-password-package",
+      "sourceRoot": "projects/ng-password-package/src",
+      "projectType": "library",
+      "prefix": "password-package",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/ng-password-package/tsconfig.lib.json",
+            "project": "projects/ng-password-package/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "project": "projects/ng-password-package/ng-package.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/ng-password-package/src/test.ts",
+            "tsConfig": "projects/ng-password-package/tsconfig.spec.json",
+            "karmaConfig": "projects/ng-password-package/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/ng-password-package/tsconfig.lib.json",
+              "projects/ng-password-package/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ng-password"
