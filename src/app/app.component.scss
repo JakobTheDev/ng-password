@@ -1,0 +1,21 @@
+.content-area {
+    background-color: #073642; // base02
+    #form-outer-wrapper {
+        height: 100%;
+    }
+    #form-inner-wrapper {
+        background-color: #eee8d5; // base2
+        border-radius: 20px;
+        padding-bottom: 20px
+    }
+    form {
+        padding: 0px 15px;
+    }
+    .mobile-validation span {
+        color: #dc322f;
+        padding-bottom: 15px;
+    }
+    button {
+        float: right;
+    }
+}

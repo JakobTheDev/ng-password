@@ -7,7 +7,7 @@ The demo is an example user registration flow which leverages the Have I Been Pw
 * The password must be at least 10 characters.
 * The password must not be in the Have I Been Pwned database.
 
-[**Demo**](https://hibp.pennington.io/)
+[**Demo**](https://jakob.pennington.io/ng-password)
 
 **PS:** The register button does nothing... yet!
 
@@ -15,13 +15,13 @@ The demo is an example user registration flow which leverages the Have I Been Pw
 
 Install the npm package.
 
-```
+```npm
 npm install ng-password --save
 ```
 
 Import the PasswordService and PasswordValidator into your ```app.module.ts```. You'll also need to import **HttpClientModule** and **ReactiveFormsModule**.
 
-```
+```typescript
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
@@ -55,11 +55,11 @@ export class AppModule { }
 
 Import the PasswordService and PasswordValidator into your component and inject them into the constructor.
 
-```
+```typescript
 import { Component, OnInit } from '@angular/core';
 import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 // HIBP Library
-import { PasswordService, PasswordValidator } from 'ng-haveibeenpwned';
+import { PasswordService, PasswordValidator } from 'ng-password';
 
 @Component({
     selector: 'hibp-root',
@@ -89,7 +89,7 @@ The PasswordValidator currently has three validators:
 
 * **matchPasswordValidator:** A form validator that compares two passwords submitted in the password and confirmPassword form fields.
 
-```
+```typescript
 // Password minimum length
 passwordminLength = 10;
 
@@ -109,7 +109,7 @@ this.registrationForm = this.fb.group(
 
 The PasswordService supports each of the API endpoints offered by the Have I Been Pwned V2 API. The services return an observable, so they can be used like this:
 
-```
+```typescript
 this.passwordService.pwnedPassword('Password01')
     .subscribe((numBreaches: number) => {
         // Return the number of breaches containing the password

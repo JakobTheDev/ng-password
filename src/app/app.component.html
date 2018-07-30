@@ -1,21 +1,79 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-<h2>Here are some links to help you start: </h2>
-<ul>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://angular.io/tutorial">Tour of Heroes</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://github.com/angular/angular-cli/wiki">CLI Documentation</a></h2>
-  </li>
-  <li>
-    <h2><a target="_blank" rel="noopener" href="https://blog.angular.io/">Angular blog</a></h2>
-  </li>
-</ul>
+<div class="main-container">
+	<div class="content-container">
+		<div class="content-area">
 
-<router-outlet></router-outlet>
+			<div id="form-outer-wrapper" class="row flex-items-xs-center flex-items-xs-middle">
+				<div id="form-inner-wrapper" class="col-sm-12 col-md-10 col-lg-6 col-xl-4">
+
+					<!-- Register heading -->
+					<div class="row flex-items-xs-center">
+						<div class="col-12">
+							<h2>Register</h2>
+						</div>
+					</div>
+
+					<!-- Registration form -->
+					<div class="row flex-items-xs-center">
+						<div class="col-12">
+
+							<form [formGroup]="registrationForm">
+								<section class="form-block">
+
+									<!-- Email input -->
+									<div class="form-group">
+										<label for="registerForm_email">Username</label>
+										<label for="registerForm_email" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="email.invalid && (email.dirty || email.touched)">
+											<input id="registerForm_email" type="text" formControlName="email" placeholder="Email">
+											<span *ngIf="!isMobile && email.errors?.required" class="tooltip-content">Email is required.</span>
+										</label>
+									</div>
+									<div *ngIf="isMobile && email.invalid && (email.dirty || email.touched)" class="mobile-validation">
+										<span *ngIf="email.errors?.required">Email is required.</span>
+									</div>
+
+									<!-- Password input -->
+									<div class="form-group">
+										<label for="registerForm_password">Password</label>
+										<label for="registerForm_password" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="password.invalid && (password.dirty || password.touched)">
+											<input id="registerForm_password" type="password" formControlName="password" placeholder="Password">
+											<span *ngIf="!isMobile && password.errors?.required" class="tooltip-content">Password is required.</span>
+											<span *ngIf="!isMobile && password.errors?.minlength" class="tooltip-content">Password must be at least {{ password.errors.minlength.requiredLength }} characters.</span>
+											<span *ngIf="!isMobile && password.errors?.numBreaches" class="tooltip-content">This password has appeared in {{ password.errors.numBreaches }} breaches. Please choose a more secure password.
+											</span>
+										</label>
+									</div>
+									<div *ngIf="isMobile && password.invalid && (password.dirty || password.touched)" class="mobile-validation">
+										<span *ngIf="password.errors?.required" class="tooltip-content">Password is required.</span>
+										<span *ngIf="password.errors?.minlength" class="tooltip-content">Password must be at least {{ password.errors.minlength.requiredLength }} characters.</span>
+										<span *ngIf="password.errors?.numBreaches" class="tooltip-content">This password has appeared in {{ password.errors.numBreaches }} breaches. Please choose a more secure password.
+										</span>
+									</div>
+
+									<!-- Confirm password input -->
+									<div class="form-group">
+										<label for="registerForm_confirm">Confirm Password</label>
+										<label for="registerForm_confirm" aria-haspopup="true" role="tooltip" class="tooltip tooltip-validation tooltip-md" [class.invalid]="confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)">
+											<input id="registerForm_confirm" type="password" formControlName="confirmPassword" placeholder="Confirm Password">
+											<span *ngIf="!isMobile && confirmPassword.errors?.required" class="tooltip-content">Password is required.</span>
+											<span *ngIf="!isMobile && confirmPassword.errors?.passwordMismatch" class="tooltip-content">Passwords do not match.</span>
+										</label>
+									</div>
+									<div *ngIf="isMobile && confirmPassword.invalid && (confirmPassword.dirty || confirmPassword.touched)" class="mobile-validation">
+										<span *ngIf="confirmPassword.errors?.required" class="tooltip-content">Password is required.</span>
+										<span *ngIf="confirmPassword.errors?.passwordMismatch" class="tooltip-content">Passwords do not match.</span>
+									</div>
+
+									<!-- Register button -->
+									<button (click)="onRegisterClicked()" [clrLoading]="loading" class="btn btn-primary">Register</button>
+
+								</section>
+							</form>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

@@ -1,15 +1,26 @@
 {
-  "name": "ng-password",
-  "author": {
-    "name": "Jakob Pennington",
-    "email": "jakob.pennington@gmail.com"
-  },
-  "description": "An angular library that provides a collections of tools to test for password strength.",
-  "peerDependencies": {
-    "@angular/common": "^6.0.0-rc.0 || ^6.0.0",
-    "@angular/core": "^6.0.0-rc.0 || ^6.0.0"
-  },
-  "dependencies": {
-    "sha1": "^1.1.1"
-  }
-}
+	"name": "ng-password",
+    "version": "1.1.1",
+	"author": {
+		"name": "Jakob Pennington",
+		"email": "jakob@pennington.io"
+	},
+	"description": "An angular library that provides a collections of tools to test for password strength.",
+	"repository": {
+        "type": "git",
+        "url": "https://github.com/JakobRPennington/ng-password.git"
+	},
+	"license": "MIT",
+    "keywords": [
+        "angular",
+        "haveibeenpwned",
+        "security",
+        "password"
+	],
+	"homepage": "https://jakob.pennington.io/ng-password",
+	"peerDependencies": {
+		"@angular/common": "^6.0.0-rc.0 || ^6.0.0",
+		"@angular/core": "^6.0.0-rc.0 || ^6.0.0",
+		"sha1": "^1.1.1"
+	}
+}	  

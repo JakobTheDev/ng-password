@@ -1,5 +1,6 @@
+// Angular imports
 import { TestBed, inject } from '@angular/core/testing';
-
+// App imports
 import { PasswordService } from './ng-password.service';
 
 describe('PasswordService', () => {
